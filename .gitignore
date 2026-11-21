@@ -1,0 +1,6 @@
+# ModelSim build outputs
+work/
+*.wlf
+transcript
+*.vstf
+modelsim.ini

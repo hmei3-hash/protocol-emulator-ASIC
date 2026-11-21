@@ -1,0 +1,24 @@
+// Phase 0 test program: send the byte 0x55 ('U') on pins_out[0] as UART,
+// 8 engine cycles per bit, then idle high for a while, then repeat.
+//
+// Format: opcode_delay_sub_data
+//   SET = 000, JMP = 111
+//   SET sub: 000 = pins, 001 = X
+//   JMP sub: 000 = always, 001 = X--
+//
+// 0x55 = 0101_0101, sent LSB first: 1,0,1,0,1,0,1,0
+//
+// addr  asm
+000_00111_000_00000   // 0   set pins, 0 [7]     start bit
+000_00111_000_00001   // 1   set pins, 1 [7]     b0 = 1
+000_00111_000_00000   // 2   set pins, 0 [7]     b1 = 0
+000_00111_000_00001   // 3   set pins, 1 [7]     b2 = 1
+000_00111_000_00000   // 4   set pins, 0 [7]     b3 = 0
+000_00111_000_00001   // 5   set pins, 1 [7]     b4 = 1
+000_00111_000_00000   // 6   set pins, 0 [7]     b5 = 0
+000_00111_000_00001   // 7   set pins, 1 [7]     b6 = 1
+000_00111_000_00000   // 8   set pins, 0 [7]     b7 = 0
+000_00111_000_00001   // 9   set pins, 1 [7]     stop bit
+000_00000_001_00011   // 10  set x, 3            idle loop counter
+111_00111_001_01011   // 11  idle: jmp x--, idle [7]   (runs 4 times, line stays high)
+111_00000_000_00000   // 12  jmp 0               send the next byte
