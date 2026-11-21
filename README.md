@@ -1,6 +1,6 @@
 # protocol-emulator-ASIC
 
-A reprogrammable protocol emulator chip for Jane Street's [protocol emulator ASIC competition](https://blog.janestreet.com/), targeting IHP 130nm via Tiny Tapeout.
+A reprogrammable protocol emulator chip for Jane Street's [protocol emulator ASIC competition](https://blog.janestreet.com/protocol-emulator-asic-competition/), targeting IHP 130nm via Tiny Tapeout.
 
 Small, cycle-exact I/O engines (PIO-style) run tiny programs to bit-bang protocols like UART, SPI and I2C, so new protocols need new software, not new silicon.
 
